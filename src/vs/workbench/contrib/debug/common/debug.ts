@@ -508,6 +508,7 @@ export interface IStackFrame extends ITreeElement {
 	readonly source: Source;
 	readonly canRestart: boolean;
 	readonly instructionPointerReference?: string;
+	readonly moduleId?: string;
 	getScopes(): Promise<IScope[]>;
 	getMostSpecificScopes(range: IRange): Promise<ReadonlyArray<IScope>>;
 	forgetScopes(): void;

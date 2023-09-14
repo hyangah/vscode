@@ -746,7 +746,7 @@ class StackFramesRenderer implements ICompressibleTreeRenderer<IStackFrame, Fuzz
 		if (stackFrame.source.raw.origin) {
 			data.file.title += `\n${stackFrame.source.raw.origin}`;
 		}
-		data.label.set(stackFrame.name, createMatches(element.filterData), stackFrame.name);
+		data.label.set(stackFrame.name, createMatches(element.filterData), stackFrame.moduleId ? `${stackFrame.name} (${stackFrame.moduleId})` : stackFrame.name);
 		data.fileName.textContent = getSpecificSourceName(stackFrame);
 		if (stackFrame.range.startLineNumber !== undefined) {
 			data.lineNumber.textContent = `${stackFrame.range.startLineNumber}`;

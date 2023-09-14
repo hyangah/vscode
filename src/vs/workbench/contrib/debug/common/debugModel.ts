@@ -407,7 +407,8 @@ export class StackFrame implements IStackFrame {
 		public readonly range: IRange,
 		private readonly index: number,
 		public readonly canRestart: boolean,
-		public readonly instructionPointerReference?: string
+		public readonly instructionPointerReference?: string,
+		public readonly moduleId?: string,
 	) { }
 
 	getId(): string {
@@ -587,7 +588,8 @@ export class Thread implements IThread {
 					rsf.column,
 					rsf.endLine || rsf.line,
 					rsf.endColumn || rsf.column
-				), startFrame + index, typeof rsf.canRestart === 'boolean' ? rsf.canRestart : true, rsf.instructionPointerReference);
+				), startFrame + index, typeof rsf.canRestart === 'boolean' ? rsf.canRestart : true, rsf.instructionPointerReference,
+					typeof rsf.moduleId === 'string' ? rsf.moduleId : undefined);
 			});
 		} catch (err) {
 			if (this.stoppedDetails) {
